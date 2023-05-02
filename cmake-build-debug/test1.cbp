@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="test1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\opencv\;CMake Files\..\..\opencv\build\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jiang/CLionProjects/test1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test1">
+				<Option output="/home/jiang/CLionProjects/test1/cmake-build-debug/test1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jiang/Qt5.12.8/5.12.8/gcc_64/include"/>
+					<Add directory="/usr/local/include/opencv4/opencv2"/>
+					<Add directory="/home/jiang/CLionProjects/test1/lib"/>
+					<Add directory="/home/jiang/opencv/build"/>
+					<Add directory="/home/jiang/opencv/include"/>
+					<Add directory="/home/jiang/opencv/modules/core/include"/>
+					<Add directory="/home/jiang/opencv/modules/flann/include"/>
+					<Add directory="/home/jiang/opencv/modules/imgproc/include"/>
+					<Add directory="/home/jiang/opencv/modules/ml/include"/>
+					<Add directory="/home/jiang/opencv/modules/photo/include"/>
+					<Add directory="/home/jiang/opencv/modules/dnn/include"/>
+					<Add directory="/home/jiang/opencv/modules/features2d/include"/>
+					<Add directory="/home/jiang/opencv/modules/imgcodecs/include"/>
+					<Add directory="/home/jiang/opencv/modules/videoio/include"/>
+					<Add directory="/home/jiang/opencv/modules/calib3d/include"/>
+					<Add directory="/home/jiang/opencv/modules/highgui/include"/>
+					<Add directory="/home/jiang/opencv/modules/objdetect/include"/>
+					<Add directory="/home/jiang/opencv/modules/stitching/include"/>
+					<Add directory="/home/jiang/opencv/modules/ts/include"/>
+					<Add directory="/home/jiang/opencv/modules/video/include"/>
+					<Add directory="/home/jiang/opencv/modules/gapi/include"/>
+					<Add directory="."/>
+					<Add directory="/usr/local/ssl/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 test1"/>
+					<CompileFile command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test1/fast">
+				<Option output="/home/jiang/CLionProjects/test1/cmake-build-debug/test1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jiang/Qt5.12.8/5.12.8/gcc_64/include"/>
+					<Add directory="/usr/local/include/opencv4/opencv2"/>
+					<Add directory="/home/jiang/CLionProjects/test1/lib"/>
+					<Add directory="/home/jiang/opencv/build"/>
+					<Add directory="/home/jiang/opencv/include"/>
+					<Add directory="/home/jiang/opencv/modules/core/include"/>
+					<Add directory="/home/jiang/opencv/modules/flann/include"/>
+					<Add directory="/home/jiang/opencv/modules/imgproc/include"/>
+					<Add directory="/home/jiang/opencv/modules/ml/include"/>
+					<Add directory="/home/jiang/opencv/modules/photo/include"/>
+					<Add directory="/home/jiang/opencv/modules/dnn/include"/>
+					<Add directory="/home/jiang/opencv/modules/features2d/include"/>
+					<Add directory="/home/jiang/opencv/modules/imgcodecs/include"/>
+					<Add directory="/home/jiang/opencv/modules/videoio/include"/>
+					<Add directory="/home/jiang/opencv/modules/calib3d/include"/>
+					<Add directory="/home/jiang/opencv/modules/highgui/include"/>
+					<Add directory="/home/jiang/opencv/modules/objdetect/include"/>
+					<Add directory="/home/jiang/opencv/modules/stitching/include"/>
+					<Add directory="/home/jiang/opencv/modules/ts/include"/>
+					<Add directory="/home/jiang/opencv/modules/video/include"/>
+					<Add directory="/home/jiang/opencv/modules/gapi/include"/>
+					<Add directory="."/>
+					<Add directory="/usr/local/ssl/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 test1/fast"/>
+					<CompileFile command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jiang/CLionProjects/test1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/jiang/CLionProjects/test1/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/bin/make -j2 -f &quot;/home/jiang/CLionProjects/test1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jiang/CLionProjects/test1/DetectRegions.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/DetectRegions.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/BasicTypes.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/EasyObjectDictionary.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/EasyObjectDictionary.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/EasyProfile.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/EasyProfile.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/EasyProtocol.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/EasyProtocol.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/EasyProfile/EasyQueue.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/HCNetSDK.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/HelloMotionModule.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/OCR.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/OCR.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/Plate.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/Plate.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/main.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/ui_HelloMotionModule.h">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/../../opencv/build/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\opencv\build\"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/../../opencv/build/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\opencv\build\"/>
+		</Unit>
+		<Unit filename="/home/jiang/CLionProjects/test1/../../opencv/build/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\opencv\build\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
