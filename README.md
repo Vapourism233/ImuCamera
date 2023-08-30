@@ -10,4 +10,4 @@ The brand of the camera is HIKvision.
 
 The brand of the IMU is TranducerM.
 
-Latest update: ２０２３/08/01
+Latest update: 2023/08/01
