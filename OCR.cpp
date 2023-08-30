@@ -1,3 +1,4 @@
+# Recognize the OCR characters using the trained SVM.
 #include "OCR.h"
 #include "imgproc/types_c.h"
 #include "opencv.hpp"
