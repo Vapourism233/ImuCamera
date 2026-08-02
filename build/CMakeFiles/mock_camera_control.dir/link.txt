@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmock_camera_control.a CMakeFiles/mock_camera_control.dir/src/hardware/MockCameraControl.cpp.o
+/usr/bin/ranlib libmock_camera_control.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libimu_camera_app.a CMakeFiles/imu_camera_app.dir/src/app/Application.cpp.o
+/usr/bin/ranlib libimu_camera_app.a

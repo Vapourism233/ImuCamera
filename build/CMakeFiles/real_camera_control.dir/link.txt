@@ -1,0 +1,2 @@
+/usr/bin/ar qc libreal_camera_control.a CMakeFiles/real_camera_control.dir/src/hardware/CameraControl.cpp.o
+/usr/bin/ranlib libreal_camera_control.a

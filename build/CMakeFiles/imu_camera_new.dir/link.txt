@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/imu_camera_new.dir/src/app/main_new.cpp.o -o imu_camera_new  -Wl,-rpath,/opt/homebrew/lib libimu_camera_app.a libimu_logger.a libconfig_manager.a libreal_imu_reader.a libreal_camera_control.a libimu_logger.a /opt/homebrew/lib/libopencv_core.5.0.0.dylib

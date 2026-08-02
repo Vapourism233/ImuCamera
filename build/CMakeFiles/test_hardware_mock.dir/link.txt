@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/test_hardware_mock.dir/test_hardware_main.cpp.o -o tests/test_hardware_mock  libimu_logger.a libmock_imu_reader.a libmock_camera_control.a libimu_logger.a

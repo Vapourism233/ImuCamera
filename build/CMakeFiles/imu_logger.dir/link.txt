@@ -1,0 +1,2 @@
+/usr/bin/ar qc libimu_logger.a CMakeFiles/imu_logger.dir/src/utils/Logger.cpp.o
+/usr/bin/ranlib libimu_logger.a
