@@ -15,15 +15,20 @@ namespace utils {
 template<typename T>
 class ThreadSafeQueue {
 public:
-    ThreadSafeQueue() = default;
-    
+    explicit ThreadSafeQueue(size_t capacity = 0)
+    : capacity_(capacity) {}
+
     /**
      * Push an item to the queue
      * @param value Item to push
      */
     void push(const T& value) {
         {
-            std::lock_guard<std::mutex> lock(mutex_);
+            std::unique_lock<std::mutex> lock(mutex_);
+            if(queue_.size() >= capacity_ && capacity_ > 0) {
+                // pop the oldest item to make space
+                queue_.pop();
+            }
             queue_.push(value);
         }
         cond_var_.notify_one();
@@ -35,7 +40,11 @@ public:
      */
     void push(T&& value) {
         {
-            std::lock_guard<std::mutex> lock(mutex_);
+            std::unique_lock<std::mutex> lock(mutex_);
+            if(queue_.size() >= capacity_ && capacity_ > 0) {
+                // pop the oldest item to make space
+                queue_.pop();
+            }
             queue_.push(std::move(value));
         }
         cond_var_.notify_one();
@@ -96,6 +105,7 @@ public:
     }
 
 private:
+    size_t capacity_{0};
     mutable std::mutex mutex_;
     std::condition_variable cond_var_;
     std::queue<T> queue_;
