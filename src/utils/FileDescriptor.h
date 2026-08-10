@@ -8,8 +8,10 @@ namespace utils{
 
 class FileDescriptor {
 public:
+    FileDescriptor() : fd_(-1) {}
+
     explicit FileDescriptor(int fd)
-        : fd_(fd) {}
+        : fd_(fd)    {}
         ~FileDescriptor() {
         if (fd_ >= 0) {
             close(fd_);
@@ -38,7 +40,6 @@ public:
         return *this;
     }
 
-
     int get() const {
         return fd_;
     }
@@ -46,8 +47,6 @@ public:
     bool valid() const { // const means this function does not modify the state of the object
         return fd_ >= 0;
     }
-
-
 
 private:
     int fd_;

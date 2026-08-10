@@ -1,4 +1,5 @@
 #include "IMUReader.h"
+#include "../utils/FileDescriptor.h"
 
 #include <fcntl.h>
 #include <termios.h>
@@ -55,22 +56,23 @@ bool IMUReader::stop() {
 }
 
 void IMUReader::readerThreadFunc() {
-    int fd = -1;
+    utils::FileDescriptor fd;
     char buffer[512];
     
     try {
         // Open serial port
-        fd = open(device_.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
-        if (fd < 0) {
-            logger_.errorf("Failed to open serial device: %s", device_.c_str());
+        fd = utils::FileDescriptor(open(device_.c_str(), O_RDWR | O_NOCTTY | O_NONBLOCK)); // Use FileDescriptor RAII wrapper
+        if(!fd.valid()) {
+            logger_.errorf("Failed to open serial port: %s", device_.c_str());
             running_ = false;
             return;
+        } else {
+            logger_.infof("Serial port opened: %s", device_.c_str());
         }
-
         // Configure serial port
         if (!configureSerialPort(fd)) {
             logger_.error("Failed to configure serial port");
-            close(fd);
+            // FileDescriptor will automatically close the fd when it goes out of scope
             running_ = false;
             return;
         }
@@ -85,14 +87,14 @@ void IMUReader::readerThreadFunc() {
             fd_set readfds;
             struct timeval tv;
             FD_ZERO(&readfds);
-            FD_SET(fd, &readfds);
+            FD_SET(fd.get(), &readfds);
             tv.tv_sec = 0;
             tv.tv_usec = 100000;  // 100ms timeout
 
-            int select_result = select(fd + 1, &readfds, nullptr, nullptr, &tv);
+            int select_result = select(fd.get() + 1, &readfds, nullptr, nullptr, &tv);
             
-            if (select_result > 0 && FD_ISSET(fd, &readfds)) {
-                ssize_t n = read(fd, buffer, sizeof(buffer) - 1);
+            if (select_result > 0 && FD_ISSET(fd.get(), &readfds)) {
+                ssize_t n = read(fd.get(), buffer, sizeof(buffer) - 1);
                 if (n > 0) {
                     buffer[n] = '\0';
                     IMUData data = parseIMUData(buffer, n);
@@ -122,21 +124,18 @@ void IMUReader::readerThreadFunc() {
     }
 
     // Cleanup
-    if (fd >= 0) {
-        close(fd);
-        logger_.debug("Serial port closed");
-    }
+    // FileDescriptor will automatically close the fd when it goes out of scope
 }
 
-bool IMUReader::configureSerialPort(int fd) {
-    if (fd < 0) {
+bool IMUReader::configureSerialPort(const utils::FileDescriptor& fd) {
+    if (!fd.valid()) {
         return false;
     }
 
     struct termios options;
     
     // Get current settings
-    if (tcgetattr(fd, &options) < 0) {
+    if (tcgetattr(fd.get(), &options) < 0) {
         logger_.error("tcgetattr failed");
         return false;
     }
@@ -176,13 +175,13 @@ bool IMUReader::configureSerialPort(int fd) {
     options.c_cc[VTIME] = 10; // 1 second timeout
 
     // Apply settings
-    if (tcsetattr(fd, TCSANOW, &options) < 0) {
+    if (tcsetattr(fd.get(), TCSANOW, &options) < 0) {
         logger_.error("tcsetattr failed");
         return false;
     }
 
     // Flush buffers
-    tcflush(fd, TCIOFLUSH);
+    tcflush(fd.get(), TCIOFLUSH);
 
     logger_.infof("Serial port configured: %u baud, 8N1", baudrate_);
     return true;

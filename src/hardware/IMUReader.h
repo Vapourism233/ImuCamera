@@ -7,6 +7,7 @@
 #include <memory>
 #include "../utils/Logger.h"
 #include "../utils/ThreadSafeQueue.h"
+#include "../utils/FileDescriptor.h"
 #include "IMUData.h"
 
 namespace hardware {
@@ -100,7 +101,7 @@ private:
      * @param fd File descriptor of serial port
      * @return true if successful, false otherwise
      */
-    bool configureSerialPort(int fd);
+    bool configureSerialPort(const utils::FileDescriptor& fd);
 
     /**
      * Parse IMU data from buffer
@@ -120,7 +121,7 @@ private:
     std::unique_ptr<std::thread> reader_thread_;
     
     // Data sharing
-    utils::ThreadSafeQueue<IMUData> data_queue_;
+    utils::ThreadSafeQueue<IMUData> data_queue_{10};
     
     // Logging
     utils::Logger& logger_ = utils::Logger::getInstance();

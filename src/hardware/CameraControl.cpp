@@ -26,6 +26,13 @@ bool CameraControl::connect() {
         return true;
     }
 
+    if(user_id_ >= 0) {
+        if(!disconnect()) {
+            setError("Cannot connect: stale session exists and failed to disconnect");
+            return false;
+        }
+    }
+
     // Prepare login info
     NET_DVR_USER_LOGIN_INFO login_info = {0};
     NET_DVR_DEVICEINFO_V40 device_info = {0};
@@ -55,8 +62,14 @@ bool CameraControl::connect() {
         std::stringstream ss;
         ss << "Failed to set capture picture mode (error code: " << NET_DVR_GetLastError() << ")";
         setError(ss.str());
-        NET_DVR_Logout(user_id_);
-        user_id_ = -1;
+        bool logoutStat = NET_DVR_Logout(user_id_);
+        if(!logoutStat) {
+            logger_.errorf("Failed to logout after capture mode set failure (error code: %lu)", NET_DVR_GetLastError());
+        }
+        else {
+            logger_.infof("Logged out after capture mode set failure (user_id: %ld)", user_id_);
+            user_id_ = -1;
+        }
         return false;
     }
 
@@ -66,20 +79,20 @@ bool CameraControl::connect() {
 }
 
 bool CameraControl::disconnect() {
-    if (!connected_) {
+    if (user_id_ < 0 ){
+        logger_.warning("No valid user id was found");
         return true;
     }
 
-    if (user_id_ >= 0) {
-        if (NET_DVR_Logout(user_id_)) {
-            logger_.infof("Logged out from camera (user_id: %ld)", user_id_);
-        } else {
-            logger_.warningf("Failed to logout from camera (error code: %d)", 
-                            NET_DVR_GetLastError());
-        }
-        user_id_ = -1;
+    if(!NET_DVR_Logout(user_id_)) {
+        std::stringstream ss;
+        ss << "Failed to logout from camera (error code: " << NET_DVR_GetLastError() << ")";
+        setError(ss.str());
+        return false;
     }
 
+    logger_.infof("Logged out from camera successfully (user_id: %ld)", user_id_);
+    user_id_ = -1;
     connected_ = false;
     return true;
 }
@@ -152,6 +165,10 @@ bool CameraControl::zoom(uint32_t speed, uint32_t direction) {
 }
 
 bool CameraControl::setPosition(uint32_t pan_position, uint32_t tilt_position) {
+    if(pan_position > 3600 || tilt_position > 900) {
+        setError("Pan or tilt position out of range");
+        return false;
+    }
     if (!connected_) {
         setError("Camera not connected");
         return false;
