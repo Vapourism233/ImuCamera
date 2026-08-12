@@ -166,32 +166,6 @@ mock_camera_control/fast:
 .PHONY : mock_camera_control/fast
 
 #=============================================================================
-# Target rules for targets named real_imu_reader
-
-# Build rule for target.
-real_imu_reader: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 real_imu_reader
-.PHONY : real_imu_reader
-
-# fast build rule for target.
-real_imu_reader/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_imu_reader.dir/build.make CMakeFiles/real_imu_reader.dir/build
-.PHONY : real_imu_reader/fast
-
-#=============================================================================
-# Target rules for targets named real_camera_control
-
-# Build rule for target.
-real_camera_control: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 real_camera_control
-.PHONY : real_camera_control
-
-# fast build rule for target.
-real_camera_control/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_camera_control.dir/build.make CMakeFiles/real_camera_control.dir/build
-.PHONY : real_camera_control/fast
-
-#=============================================================================
 # Target rules for targets named config_manager
 
 # Build rule for target.
@@ -315,54 +289,6 @@ src/config/ConfigManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/config_manager.dir/build.make CMakeFiles/config_manager.dir/src/config/ConfigManager.cpp.s
 .PHONY : src/config/ConfigManager.cpp.s
 
-src/hardware/CameraControl.o: src/hardware/CameraControl.cpp.o
-.PHONY : src/hardware/CameraControl.o
-
-# target to build an object file
-src/hardware/CameraControl.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_camera_control.dir/build.make CMakeFiles/real_camera_control.dir/src/hardware/CameraControl.cpp.o
-.PHONY : src/hardware/CameraControl.cpp.o
-
-src/hardware/CameraControl.i: src/hardware/CameraControl.cpp.i
-.PHONY : src/hardware/CameraControl.i
-
-# target to preprocess a source file
-src/hardware/CameraControl.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_camera_control.dir/build.make CMakeFiles/real_camera_control.dir/src/hardware/CameraControl.cpp.i
-.PHONY : src/hardware/CameraControl.cpp.i
-
-src/hardware/CameraControl.s: src/hardware/CameraControl.cpp.s
-.PHONY : src/hardware/CameraControl.s
-
-# target to generate assembly for a file
-src/hardware/CameraControl.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_camera_control.dir/build.make CMakeFiles/real_camera_control.dir/src/hardware/CameraControl.cpp.s
-.PHONY : src/hardware/CameraControl.cpp.s
-
-src/hardware/IMUReader.o: src/hardware/IMUReader.cpp.o
-.PHONY : src/hardware/IMUReader.o
-
-# target to build an object file
-src/hardware/IMUReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_imu_reader.dir/build.make CMakeFiles/real_imu_reader.dir/src/hardware/IMUReader.cpp.o
-.PHONY : src/hardware/IMUReader.cpp.o
-
-src/hardware/IMUReader.i: src/hardware/IMUReader.cpp.i
-.PHONY : src/hardware/IMUReader.i
-
-# target to preprocess a source file
-src/hardware/IMUReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_imu_reader.dir/build.make CMakeFiles/real_imu_reader.dir/src/hardware/IMUReader.cpp.i
-.PHONY : src/hardware/IMUReader.cpp.i
-
-src/hardware/IMUReader.s: src/hardware/IMUReader.cpp.s
-.PHONY : src/hardware/IMUReader.s
-
-# target to generate assembly for a file
-src/hardware/IMUReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/real_imu_reader.dir/build.make CMakeFiles/real_imu_reader.dir/src/hardware/IMUReader.cpp.s
-.PHONY : src/hardware/IMUReader.cpp.s
-
 src/hardware/MockCameraControl.o: src/hardware/MockCameraControl.cpp.o
 .PHONY : src/hardware/MockCameraControl.o
 
@@ -474,8 +400,6 @@ help:
 	@echo "... imu_logger"
 	@echo "... mock_camera_control"
 	@echo "... mock_imu_reader"
-	@echo "... real_camera_control"
-	@echo "... real_imu_reader"
 	@echo "... test_hardware_mock"
 	@echo "... src/app/Application.o"
 	@echo "... src/app/Application.i"
@@ -486,12 +410,6 @@ help:
 	@echo "... src/config/ConfigManager.o"
 	@echo "... src/config/ConfigManager.i"
 	@echo "... src/config/ConfigManager.s"
-	@echo "... src/hardware/CameraControl.o"
-	@echo "... src/hardware/CameraControl.i"
-	@echo "... src/hardware/CameraControl.s"
-	@echo "... src/hardware/IMUReader.o"
-	@echo "... src/hardware/IMUReader.i"
-	@echo "... src/hardware/IMUReader.s"
 	@echo "... src/hardware/MockCameraControl.o"
 	@echo "... src/hardware/MockCameraControl.i"
 	@echo "... src/hardware/MockCameraControl.s"
