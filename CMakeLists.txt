@@ -49,12 +49,12 @@ target_link_libraries(imu_logger PRIVATE Threads::Threads)
 # ============================================================================
 
 # Mock IMU Reader (for testing without hardware)
-add_library(mock_imu_reader src/hardware/MockIMUReader.cpp)
+add_library(mock_imu_reader test/MockIMUReader.cpp)
 target_link_libraries(mock_imu_reader PUBLIC imu_logger Threads::Threads)
 target_include_directories(mock_imu_reader PUBLIC ${CMAKE_SOURCE_DIR})
 
 # Mock Camera Control (for testing without hardware)
-add_library(mock_camera_control src/hardware/MockCameraControl.cpp)
+add_library(mock_camera_control test/MockCameraControl.cpp)
 target_link_libraries(mock_camera_control PUBLIC imu_logger)
 target_include_directories(mock_camera_control PUBLIC ${CMAKE_SOURCE_DIR})
 
@@ -146,7 +146,7 @@ endif()
 
 if(BUILD_TESTS)
     # Hardware Mock Test Suite
-    add_executable(test_hardware_mock test_hardware_main.cpp)
+    add_executable(test_hardware_mock test/test_hardware_main.cpp)
     target_link_libraries(test_hardware_mock PRIVATE
         imu_logger
         mock_imu_reader
@@ -157,7 +157,7 @@ if(BUILD_TESTS)
     
     # Mark test executable
     set_target_properties(test_hardware_mock PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests"
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/test"
     )
     
     # Enable CTest
@@ -204,7 +204,7 @@ message(STATUS "  make")
 message(STATUS "")
 if(BUILD_TESTS)
     message(STATUS "To run tests:")
-    message(STATUS "  ./tests/test_hardware_mock")
+    message(STATUS "  ./test/test_hardware_mock")
     message(STATUS "  OR: ctest")
     message(STATUS "")
 endif()

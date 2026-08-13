@@ -6,9 +6,9 @@
 #include <chrono>
 #include <cmath>
 #include <thread>
-#include "../utils/Logger.h"
-#include "../utils/ThreadSafeQueue.h"
-#include "IMUData.h"
+#include "../src/utils/Logger.h"
+#include "../src/utils/ThreadSafeQueue.h"
+#include "../src/hardware/IMUData.h"
 
 namespace hardware {
 
