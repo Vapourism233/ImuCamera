@@ -27,7 +27,6 @@ jobs:
       # 4. Execute CTest
       - name: RUN CTest
         run: |
-          cd build
           ctest --test-dir build-mock -C Release --output-on-failure
 
 
