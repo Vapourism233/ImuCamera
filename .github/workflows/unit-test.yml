@@ -21,7 +21,7 @@ jobs:
         run: |
           cmake -B build -S .
           cmake --build build -j $(nproc)
-          cmake --build build-mock -j $(nproc) --target test_hardware_mock --config Release
+          cmake -S . -B build-mock -DBUILD_TESTS=ON -DBUILD_WITH_MOCK_HARDWARE=ON -j $(nproc)
 
       # 4. Execute CTest
       - name: RUN CTest
