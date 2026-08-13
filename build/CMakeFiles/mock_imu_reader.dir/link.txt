@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmock_imu_reader.a CMakeFiles/mock_imu_reader.dir/src/hardware/MockIMUReader.cpp.o
-/usr/bin/ranlib libmock_imu_reader.a
