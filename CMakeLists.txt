@@ -5,6 +5,31 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ============================================================================
+# Fetch the C++ bindings for ZeroMQ (used by the middleware layer)
+include(FetchContent)
+
+# cppzmq's tests/examples subprojects still declare cmake_minimum_required(VERSION < 3.5),
+# which CMake 4.x rejects. We only need the header-only interface target.
+set(CPPZMQ_BUILD_TESTS OFF CACHE BOOL "Build cppzmq tests" FORCE)
+
+# Once cppzmq is downloaded, don't hit the network / re-check git on every
+# reconfigure (only matters when the source dir already exists).
+set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
+
+FetchContent_Declare(
+    cppzmq
+    GIT_REPOSITORY https://github.com/zeromq/cppzmq.git
+    GIT_TAG        v4.10.0
+)
+FetchContent_MakeAvailable(cppzmq)
+
+# ============================================================================
+# Application Layer (client) - connects to ZmqMiddleware, does not bind
+add_executable(app_layer application/AppLayer.cpp)
+target_link_libraries(app_layer PRIVATE cppzmq)
+target_include_directories(app_layer PRIVATE ${CMAKE_SOURCE_DIR})
+
+# ============================================================================
 # Configuration Options
 # ============================================================================
 
@@ -101,11 +126,7 @@ else()
     )
     if(OpenCV_FOUND)
         target_link_libraries(imu_camera_app PUBLIC ${OpenCV_LIBS})
-    endif(    real_imu_reader
-        real_camera_control
-        Threads::Threads
-        ${OpenCV_LIBS}
-    )
+    endif()
 endif()
 
 target_include_directories(imu_camera_app PUBLIC ${CMAKE_SOURCE_DIR})
@@ -160,9 +181,22 @@ if(BUILD_TESTS)
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/test"
     )
     
+    # ZeroMQ Middleware Mock Test
+    add_executable(test_zmq_middleware test/test_zmq_middleware.cpp)
+    target_link_libraries(test_zmq_middleware PRIVATE
+        cppzmq
+        imu_logger
+        Threads::Threads
+    )
+    target_include_directories(test_zmq_middleware PRIVATE ${CMAKE_SOURCE_DIR})
+    set_target_properties(test_zmq_middleware PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/test"
+    )
+
     # Enable CTest
     enable_testing()
     add_test(NAME HardwareMockTest COMMAND test_hardware_mock)
+    add_test(NAME ZmqMiddlewareTest COMMAND test_zmq_middleware)
 endif()
 
 # ============================================================================
