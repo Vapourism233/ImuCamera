@@ -1,0 +1,33 @@
+name: ImuCamera unit test
+
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: [ubuntu-latest]
+
+    steps:
+      # 1. Pull code from the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Install dependencies
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+        
+      # 3. Configure the Cmake project
+      - name: Configure CMake
+        run: |
+          cmake -B build -S .
+          cmake --build build -j $(nproc)
+          cmake --build build-mock -j $(nproc) --target test_hardware_mock --config Release
+
+      # 4. Execute CTest
+      - name: RUN CTest
+        run: |
+          cd build
+          ctest --test-dir build-mock -C Release --output-on-failure
+
+
+    
