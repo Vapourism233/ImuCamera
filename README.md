@@ -220,6 +220,18 @@ Main application framework with:
 - Cloud integration
 - Mobile app control
 
+# Update Logs
+
+2026/08/12 - Added unittest for the project while pushing new changes to the repo
+
+2026/08/10 - Added File descriptor management for RAII
+
+2026/08/06 - Added Safety Queue for inter-thread communication and improved error handling
+
+2026/08/02 - Added detailed architecture highlights and performance metrics
+
+2023/08/01 - Initial commit of legacy code
+
 ## License
 
 Please refer to project license (if available).

@@ -3,10 +3,11 @@
 #include <chrono>
 #include <iomanip>
 #include "src/utils/Logger.h"
-#include "src/hardware/MockIMUReader.h"
-#include "src/hardware/MockCameraControl.h"
+#include "MockIMUReader.h"
+#include "MockCameraControl.h"
 #include "src/hardware/IMUData.h"
 
+// add path to ../src/hardware to include MockIMUReader.h and MockCameraControl.h
 using namespace hardware;
 
 /**
