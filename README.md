@@ -222,6 +222,8 @@ Main application framework with:
 
 # Update Logs
 
+2026/08/14 - Added new unit tests for IMUReader and CameraControl modules, improved test coverage. And added cppzmq for inter-thread communication.
+
 2026/08/12 - Added unittest for the project while pushing new changes to the repo
 
 2026/08/10 - Added File descriptor management for RAII
